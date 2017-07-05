@@ -20,10 +20,11 @@ public class ReceiveLogsToFile {
 	public static void main(String[] args) throws Exception {
 		// 创建连接和频道
 		ConnectionFactory factory = new ConnectionFactory();
-		factory.setHost("192.168.101.174");
+		factory.setHost("192.168.1.5");
 		// 指定用户 密码
-		factory.setUsername("admin");
-		factory.setPassword("admin");
+		factory.setUsername("hxd");
+		factory.setPassword("hxd");
+		factory.setVirtualHost("test");
 		// 指定端口
 		factory.setPort(AMQP.PROTOCOL.PORT);
 		Connection connection = factory.newConnection();
@@ -56,7 +57,8 @@ public class ReceiveLogsToFile {
 		}
 	}
 
-	private static void print2File(String msg) {
+	private static void print2File(String msg)
+	{
 		try {
 			String dir = ReceiveLogsToFile.class.getClassLoader().getResource("").getPath();
 			String logFileName = new SimpleDateFormat("yyyy-MM-dd").format(new Date());

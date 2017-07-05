@@ -8,24 +8,25 @@ import com.rabbitmq.client.QueueingConsumer;
 
 public class Work {
 	//队列名称  
-    private final static String QUEUE_NAME = "workqueue-durable";  
+    private final static String QUEUE_NAME = "helloword";
     
 	public static void main(String[] args) throws Exception {
 		 //区分不同工作进程的输出  
         int hashCode = Work.class.hashCode();  
         //创建连接和频道  
         ConnectionFactory factory = new ConnectionFactory();  
-        factory.setHost("192.168.101.174");  
+        factory.setHost("192.168.1.5");
+        factory.setVirtualHost("test");
         //指定用户 密码
-        factory.setUsername("admin");
-        factory.setPassword("admin");
+        factory.setUsername("hxd");
+        factory.setPassword("hxd");
         //指定端口
         factory.setPort(AMQP.PROTOCOL.PORT);
         Connection connection = factory.newConnection();  
         Channel channel = connection.createChannel();  
         boolean durable = true; //设置消息持久化  RabbitMQ不允许使用不同的参数重新定义一个队列，所以已经存在的队列，我们无法修改其属性。
         //声明队列  
-        channel.queueDeclare(QUEUE_NAME, durable, false, false, null);  
+        channel.queueDeclare(QUEUE_NAME, true, false, false, null);
       
         QueueingConsumer consumer = new QueueingConsumer(channel);  
         
