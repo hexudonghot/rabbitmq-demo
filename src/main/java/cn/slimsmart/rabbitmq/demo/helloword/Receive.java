@@ -10,7 +10,6 @@ public class Receive {
 
     //消息队列名称
     private final static String QUEUE_NAME = "helloword";
-
     public static void main(String[] args) throws Exception {
         //打开连接和创建频道，与发送端一样
         ConnectionFactory factory = new ConnectionFactory();
