@@ -11,10 +11,11 @@ public class ReceiveLogsTopicForKernel {
 	private static final String EXCHANGE_NAME = "topic_logs";  
 	public static void main(String[] args) throws Exception {
 		// 创建连接和频道  
-        ConnectionFactory factory = new ConnectionFactory();  
-        factory.setHost("192.168.101.174");
-	    factory.setUsername("admin");
-		factory.setPassword("admin");
+        ConnectionFactory factory = new ConnectionFactory();
+        factory.setHost("192.168.1.5");
+        factory.setUsername("hxd");
+        factory.setPassword("hxd");
+        factory.setVirtualHost("test");
 		factory.setPort(AMQP.PROTOCOL.PORT);
         Connection connection = factory.newConnection();  
         Channel channel = connection.createChannel();  
